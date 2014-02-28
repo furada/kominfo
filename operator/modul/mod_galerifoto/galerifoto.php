@@ -90,6 +90,7 @@ session_start();
   <th><center>Foto</center></th>
   <th>Judul Foto</th>
   <th>Album</th>
+  <th>Slide</th>
    <th>Oleh</th>
   <th><center>Edit</center></th>
   <th><center>Hapus</center></th>
@@ -121,6 +122,7 @@ session_start();
   
   <td>$r[jdl_gallery]</td>
   <td>$r[jdl_album]</td>
+  <td>"; if($r['slide']=='1'){ echo "Ya"; }else{ echo "Tidak"; } echo "</td>
    <td>$r[username]</td>
   <td width='8%'>
   <a href=?module=galerifoto&act=editgalerifoto&id=$r[id_gallery]>
@@ -193,6 +195,12 @@ session_start();
   <div class='row-form'>
   <div class='span3'>Gambar</div>
   <div class='span9'><input type=file name='fupload'></div>
+  <div class='clear'></div>
+  </div>    
+
+  <div class='row-form'>
+  <div class='span3'>Slide</div>
+  <div class='span9'><input type=\"checkbox\" name=\"slide\" value=\"1\" /></div>
   <div class='clear'></div>
   </div>    
 	
@@ -287,6 +295,12 @@ session_start();
   <div class='span9'><input type=file name='fupload'></div>
   <div class='clear'></div>
   </div>
+  
+    <div class='row-form'>
+  <div class='span3'>Slide</div>
+  <div class='span9'><input type=\"checkbox\" name=\"slide\" value=\"1\""; if($r['slide']==1){ echo "checked=\"checked\""; } echo "/></div>
+  <div class='clear'></div>
+  </div>    
   
 	
   <div class='row-form'>

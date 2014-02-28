@@ -127,6 +127,10 @@ elseif ($module=='galerifoto' AND $act=='input'){
   $nama_file_unik = $acak.$nama_file; 
 
  $gallery_seo = seo_title($_POST['jdl_gallery']);
+ if($_POST['slide']=='1'){
+	$sqlUp="update gallery set slide='0' where id_album='$_POST[album]'";
+	 mysql_query($sqlUp);
+ }
 
   // Apabila ada gbr_gallery yang diupload
   if (!empty($lokasi_file)){
@@ -140,13 +144,13 @@ elseif ($module=='galerifoto' AND $act=='input'){
                                     id_album,
 									username,
                                     keterangan,
-                                    gbr_gallery) 
+                                    gbr_gallery, slide) 
                             VALUES('$_POST[jdl_gallery]',
                                    '$gallery_seo',
                                    '$_POST[album]',
 								   '$_SESSION[namauser]',
                                    '$_POST[keterangan]',
-                                   '$nama_file_unik')");
+                                   '$nama_file_unik', '$_POST[slide]')");
 								   
 								   
   header('location:../../media.php?module='.$module.'&msg=insert');
@@ -156,12 +160,12 @@ elseif ($module=='galerifoto' AND $act=='input'){
                                     gallery_seo,
                                     id_album,
 									username,
-                                    keterangan) 
+                                    keterangan, slide) 
                             VALUES('$_POST[jdl_gallery]',
                                    '$gallery_seo',
                                    '$_POST[album]', 
 								   '$_SESSION[namauser]',
-                                   '$_POST[keterangan]')");
+                                   '$_POST[keterangan]', '$_POST[slide]')");
 								   
 								   
 								   
@@ -178,13 +182,20 @@ elseif ($module=='galerifoto' AND $act=='update'){
   $nama_file_unik = $acak.$nama_file; 
 
   $gallery_seo = seo_title($_POST['jdl_gallery']);
+  
+  
+  if($_POST['slide']=='1'){
+	$sqlUp="update gallery set slide='0' where id_album='$_POST[album]'";
+	 mysql_query($sqlUp);
+ }
 
   // Apabila gbr_gallery tidak diganti
   if (empty($lokasi_file)){
      mysql_query("UPDATE gallery SET jdl_gallery  = '$_POST[jdl_gallery]',
                                    gallery_seo   = '$gallery_seo', 
                                    id_album = '$_POST[album]',
-                                   keterangan  = '$_POST[keterangan]'  
+                                   keterangan  = '$_POST[keterangan]', 
+								   slide='$_POST[slide]' 
                              WHERE id_gallery   = '$_POST[id]'");
 							 
    header('location:../../media.php?module='.$module.'&msg=update');
@@ -204,7 +215,8 @@ elseif ($module=='galerifoto' AND $act=='update'){
                                    gallery_seo   = '$gallery_seo', 
                                    id_album = '$_POST[album]',
                                    keterangan  = '$_POST[keterangan]',  
-                                   gbr_gallery      = '$nama_file_unik'   
+                                   gbr_gallery      = '$nama_file_unik',  
+								   slide='$_POST[slide]' 
                              WHERE id_gallery   = '$_POST[id]'");
 							 
 							 
