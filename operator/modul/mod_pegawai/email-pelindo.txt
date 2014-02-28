@@ -93,21 +93,20 @@ if ($module=='pegawai' AND $act=='input'){
     else{
     Uploadpegawai($nama_file_unik);
     watermark_image('../../../img_pegawai/'.$nama_file_unik);
-   $sql="INSERT INTO pegawai(username, nama, nip, tlahir, tgllahir, gol, tmtgol, jabatan, tmtjabatan, pendidikan, universitas, thnlulus, ijazah, urutan, gambar,keterangan,aktif) 
+
+   mysql_query("INSERT INTO pegawai(username, nama, nip, tlahir, tgllahir, gol, tmtgol, jabatan, tmtjabatan, pendidikan, universitas, thnlulus, ijazah, urutan, gambar,keterangan,aktif) 
                             VALUES( '$_SESSION[namauser]','$_POST[nama]', '$_POST[nip]', '$_POST[tlahir]', '$_POST[tgllahir]', '$_POST[gol]', '$_POST[tmtgol]', '$_POST[jabatan]', '$_POST[tmtjabatan]', '$_POST[pendidikan]', '$_POST[universitas]', '$_POST[thnlulus]', '$_POST[ijazah]',
                                    '$_POST[urutan]','$nama_file_unik',
-                                   '$_POST[keterangan]', '$_POST[aktif]')";
-   mysql_query($sql);
+                                   '$_POST[keterangan]', '$_POST[aktif]')");
   header('location:../../media.php?module='.$module.'&msg=insert');
  }
   }
   else{
-	  $sql="INSERT INTO pegawai(username, nama, nip, tlahir, tgllahir, gol, tmtgol, jabatan, tmtjabatan, pendidikan, universitas, thnlulus, ijazah, urutan, keterangan,aktif) 
-                            VALUES('$_SESSION[namauser]','$_POST[nama]', '$_POST[nip]', '$_POST[tlahir]', '$_POST[tgllahir]', '$_POST[gol]', '$_POST[tmtgol]', '$_POST[jabatan]', '$_POST[tmtjabatan]', '$_POST[pendidikan]', '$_POST[universitas]', '$_POST[thnlulus]', '$_POST[ijazah]',
+    mysql_query("INSERT INTO pegawai(username, nama, jabatan,urutan, keterangan,aktif) 
+                            VALUES('$_SESSION[namauser]','$_POST[nama]','$_POST[jabatan]',
                                    '$_POST[urutan]',
                                    '$_POST[keterangan]', 
-								   '$_POST[aktif]')";
-    mysql_query($sql);
+								   '$_POST[aktif]')");
 
   header('location:../../media.php?module='.$module.'&msg=insert');
   }
@@ -144,24 +143,14 @@ elseif ($module=='pegawai' AND $act=='update'){
     Uploadpegawai($nama_file_unik,'../../../img_pegawai/',300,120);
 	watermark_image('../../../img_pegawai/'.$nama_file_unik);
 
-	$sql="UPDATE pegawai SET nama       = '$_POST[nama]',
-							nip='$_POST[nip]',
-							tlahir='$_POST[tlahir]',
-							tgllahir='$_POST[tgllahir]',
-							gol='$_POST[gol]',
-							tmtgol='$_POST[tmtgol]',
+	
+    mysql_query("UPDATE pegawai SET nama       = '$_POST[nama]',
 	                          jabatan       = '$_POST[jabatan]',
-							  tmtjabatan='$_POST[tmtjabatan]',
-							  pendidikan='$_POST[pendidikan]',
-							  universitas='$_POST[universitas]',
-							  thnlulus='$_POST[thnlulus]',
-							  ijazah='$_POST[ijazah]',
 							   urutan      = '$_POST[urutan]',
 								 aktif       = '$_POST[aktif]',
 						 	keterangan = '$_POST[keterangan]',  
                                    gambar      = '$nama_file_unik'     
-                             WHERE id_pegawai   = '$_POST[id]'";
-    mysql_query($sql);
+                             WHERE id_pegawai   = '$_POST[id]'");
 
    header('location:../../media.php?module='.$module.'&msg=update');
    }

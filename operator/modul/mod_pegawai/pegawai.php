@@ -87,7 +87,9 @@ session_start();
   <thead>
   <tr>
   <th>Nama Pegawai</th>
-  <th>jabatan</th>
+  <th>NIP</th>
+  <th>Golongan</th>
+  <th>Jabatan</th>
   <th>Urutan</th>
   <th>Aktif</th>
   <th>Edit</th>
@@ -128,6 +130,8 @@ session_start();
 	
   echo "<tr class=gradeX> 
   <td>$r[nama]</td>
+  <td>$r[nip]</td>
+  <td>$r[gol]</td>
   <td>$r[jabatan]</td>
   <td><center><input id='25' type=text value='$r[urutan]' disabled></div>&nbsp;$menu_posisi</center></td>
   <td><center>$r[aktif]</center></td>
@@ -316,9 +320,33 @@ echo "
   <div class='clear'></div>
   </div>    
    
-   <div class='row-form'>
+  <div class='row-form'>
   <div class='span3'>NIP</div>
   <div class='span9'>  <input type=text name='nip' value='$r[nip]'></div>
+  <div class='clear'></div>
+  </div>
+  
+  <div class='row-form'>
+  <div class='span3'>Tempat Lahir</div>
+  <div class='span9'>  <input type=text name='tlahir' value='$r[tlahir]'></div>
+  <div class='clear'></div>
+  </div>
+
+  <div class='row-form'>
+  <div class='span3'>Tgl Lahir</div>
+  <div class='span9'>  <input type=text name='tgllahir' value='$r[tgllahir]'></div>
+  <div class='clear'></div>
+  </div>
+
+  <div class='row-form'>
+  <div class='span3'>Golongan</div>
+  <div class='span9'>  <input type=text name='gol' value='$r[gol]'></div>
+  <div class='clear'></div>
+  </div>
+  
+  <div class='row-form'>
+  <div class='span3'>T.M.T Golongan</div>
+  <div class='span9'>  <input type=text name='tmtgol' value='$r[tmtgol]'></div>
   <div class='clear'></div>
   </div>
    
@@ -326,7 +354,37 @@ echo "
   <div class='span3'>Jabatan</div>
   <div class='span9'><input type=text name='jabatan' value='$r[jabatan]'></div>
   <div class='clear'></div>
-  </div>    
+  </div>
+      
+  <div class='row-form'>
+  <div class='span3'>T.M.T Jabatan</div>
+  <div class='span9'>  <input type=text name='tmtjabatan' value='$r[tmtjabatan]'></div>
+  <div class='clear'></div>
+  </div>
+
+  <div class='row-form'>
+  <div class='span3'>Pendidikan</div>
+  <div class='span9'>  <input type=text name='pendidikan' value='$r[pendidikan]'></div>
+  <div class='clear'></div>
+  </div>
+  
+  <div class='row-form'>
+  <div class='span3'>Universitas</div>
+  <div class='span9'>  <input type=text name='universitas' value='$r[universitas]'></div>
+  <div class='clear'></div>
+  </div>
+  
+  <div class='row-form'>
+  <div class='span3'>Thn Lulus</div>
+  <div class='span9'>  <input type=text name='thnlulus' value='$r[thnlulus]'></div>
+  <div class='clear'></div>
+  </div>  
+
+  <div class='row-form'>
+  <div class='span3'>Tingkat Ijazah</div>
+  <div class='span9'>  <input type=text name='ijazah' value='$r[ijazah]'></div>
+  <div class='clear'></div>
+  </div>
 
   <div class='row-form'>
   <div class='span3'>Urutan</div>
